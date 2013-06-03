@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#read state
+state=`/usr/bin/synclient | grep "TouchpadOff" | cut -f2 -d '=' | tr -d ' '`
+
+if [ "$state" -eq "0" ]; then
+	/usr/bin/synclient TouchpadOff=1
+else
+	/usr/bin/synclient TouchpadOff=0
+fi
