@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DISPLAY_EXT="DP-0"
+DISPLAY_INT="LVDS-0"
+status=`xrandr | grep "$DISPLAY_EXT .*mm"`
+
+
+if [ -n "$status" ] ; then
+	xrandr --output $DISPLAY_EXT --off
+else
+	#Set 2 screens
+	xrandr --output $DISPLAY_EXT --auto --right-of $DISPLAY_INT
+fi
